@@ -1,12 +1,2 @@
-FROM node:18
+FROM nginx
 
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm install
-
-COPY src/ ./src
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
