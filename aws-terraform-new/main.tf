@@ -44,11 +44,11 @@ module "security_group" {
 
 module "ec2" {
   source             = "./ec2"
-  ami_id             = "ami-04b4f1a9cf54c11d0" # Ubuntu 22.04 (us-east-1)
+  ami_id             = "ami-0b6c6ebed2801a5cb" # Ubuntu 22.04 (us-east-1)
   instance_type      = "t2.micro"
   subnet_id          = element(module.vpc.public_subnet_ids, 0)
   security_group_ids = [module.security_group.sg_ec2_sg_ssh_http_id]
-  key_name           = "project-keypair2025"  # create keypair manually & update name here
+  key_name           = "hyd-0403"  # create keypair manually & update name here
 }
 
 module "eks" {
@@ -65,8 +65,8 @@ module "rds" {
   source                  = "./rds"
   db_identifier           = "my-rds-instance"
   db_name                 = "appdb"
-  db_username             = "vijay"
-  db_password             = "Password123" 
+  db_username             = "naga123"
+  db_password             = "Naga123" 
   db_subnet_ids           = module.vpc.public_subnet_ids
   db_subnet_group_name    = "rds-subnet-group"
   security_group_id       = module.security_group.rds_mysql_sg_id
@@ -77,6 +77,7 @@ module "rds" {
   instance_class          = "db.t3.micro"
   backup_retention_period = 0
 }
+
 
 
 
